@@ -1,6 +1,8 @@
 function fact_recursive(n) {
-  if (n === 1) return 1;
-  else return n * fact_recursive(n - 1);
+  if (n === 1) {
+    return 1;
+  }
+  return n * fact_recursive(n - 1);
 }
 
 function fact_iteration(n) {
@@ -11,5 +13,5 @@ function fact_iteration(n) {
   return sum;
 }
 
-console.log(fact_recursive(8));
-console.log(fact_iteration(8));
+console.log(fact_recursive(5));
+console.log(fact_iteration(5));
