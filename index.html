@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roll Dice</title>
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="dice-setting">
+        <input type="text" id="roll-times" placeholder="請輸入執行次數" />
+        <input
+          type="button"
+          id="roll"
+          value="擲出"
+          onclick="round.rollDice()"
+        />
+      </div>
+      <h2>執行結果</h2>
+      <div class="display-block" id="display"></div>
+    </div>
+  </body>
+</html>
