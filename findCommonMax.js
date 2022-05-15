@@ -1,7 +1,7 @@
 function testCase() {
-	let arr1 = [1, 2, 4, 5, 6];
-	let arr2 = [3, 4, 5, 6];
-	let arr3 = [4, 5, 6];
+	const arr1 = [1, 2, 4, 5, 6];
+	const arr2 = [3, 4, 5, 6];
+	const arr3 = [4, 5, 6];
 	return [arr1, arr2, arr3];
 }
 
@@ -15,7 +15,7 @@ function main() {
 
 
 function findCommonMax(arr1, arr2, arr3) {
-	let map = new Map();
+	const map = new Map();
 	addNumberCountToMap(arr1, map);
 	addNumberCountToMap(arr2, map); 
 	addNumberCountToMap(arr3, map); 
@@ -25,7 +25,7 @@ function findCommonMax(arr1, arr2, arr3) {
 
 
 function addNumberCountToMap(arr, map) {
-	for (let num of arr) {
+	for (const num of arr) {
 		if (map.has(num)) {
 			map.set(num, map.get(num) + 1);
 			continue;
@@ -38,7 +38,7 @@ function addNumberCountToMap(arr, map) {
 
 function getCommonMax(map) {
 	let tempMax = -1;
-	for (let [key, value] of map) {
+	for (const [key, value] of map) {
 		if (value >= 3 && key > tempMax) {
 			tempMax = key;
 		}
