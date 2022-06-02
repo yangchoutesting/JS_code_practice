@@ -63,6 +63,49 @@ class Tree {
 		return this.#equals(this.root, other.root);
 	}
 
+	isBinarySearchTree() {
+		return this.#isBinarySearchTree(this.root, Number.MIN_VALUE, Number.MAX_VALUE);
+	}
+
+	traverseLevelOrder() {
+		for (let i = 0; i <= this.height(); i++) {
+			this.getNodesAtDistance(i)
+				.forEach(item => console.log(item));
+		}
+	}
+
+	getNodesAtDistance(distance) {
+		const list = [];
+		this.#getNodesAtDistance(this.root, distance, list);
+		return list;
+	}
+
+	#getNodesAtDistance(node, distance, list) {
+		if (node == null) {
+			return;
+		}
+
+		if (distance === 0) {
+			list.push(node.value);
+			return;
+		}
+
+		this.#getNodesAtDistance(node.leftChild, distance - 1, list);
+		this.#getNodesAtDistance(node.rightChild, distance - 1, list);
+	}
+
+	#isBinarySearchTree(root, min, max) {
+		if (root == null) {
+			return true
+		}
+		if (root.value < min || root.value > max) {
+			return false;
+		}
+		return this.#isBinarySearchTree(root.leftChild, min, root.value - 1)
+			&& this.#isBinarySearchTree(root.rightChild, root.value + 1, max);
+
+	}
+
 	#equals(first, second) {
 		if (first == null && second == null) {
 			return true;
@@ -146,16 +189,9 @@ function main() {
 	tree.insert(8);
 	tree.insert(10);
 
-	const tree2 = new Tree();
-	tree2.insert(7);
-	tree2.insert(4);
-	tree2.insert(9);
-	tree2.insert(1);
-	tree2.insert(6);
-	tree2.insert(8);
-	tree2.insert(10);
+	tree.traverseLevelOrder();
 
-	console.log(tree.equals(tree2));
+
 }
 
 
